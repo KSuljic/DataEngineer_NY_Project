@@ -51,8 +51,8 @@ def main():
     #DOCS = []
 
     # Get the maximum _id value from the collection
-    max_id = collection.find_one(sort=[("_id", -1)])
-    index_counter = max_id['_id'] + 1 if max_id else 0
+    max_id = collection.find_one(sort=[("ny_id", -1)])
+    index_counter = max_id['ny_id'] + 1 if max_id else 0
 
     # Main loop
     page = 0
@@ -75,7 +75,7 @@ def main():
 
             # Assign a new _id to each document
             for doc in documents:
-                doc['_id'] = index_counter
+                doc['ny_id'] = index_counter
                 index_counter += 1
 
             DOCS.extend(documents)
@@ -119,7 +119,7 @@ def main():
 
             # rename the _id as there is a immutable _id field in mongodb
             if '_id' in doc:
-                doc['ny_id'] = doc['_id']
+                #doc['ny_id'] = doc['_id']
                 del doc['_id']
 
 
