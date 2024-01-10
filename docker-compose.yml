@@ -1,0 +1,26 @@
+version: '3.3'
+services:
+  mongodb:
+    image: ny_mongodb
+    container_name: ny-mongodb-instance
+    volumes:
+    - mongodb_data:/data/db
+    networks:
+      - ny-network
+    ports:
+    - "27017:27017"
+
+  article-importer:
+    image: ny-article-importer
+    container_name: ny-importer-instance
+    depends_on:
+      - mongodb
+    networks:
+      - ny-network
+
+networks:
+  ny-network:
+    driver: bridge
+
+volumes:
+  mongodb_data:
