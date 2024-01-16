@@ -4,11 +4,11 @@ services:
     image: ny_mongodb
     container_name: ny-mongodb-instance
     volumes:
-    - mongodb_data:/data/db
+      - mongodb_data:/data/db
     networks:
       - ny-network
     ports:
-    - "27017:27017"
+      - "27017:27017"
 
   article-importer:
     image: ny-article-importer
@@ -18,9 +18,20 @@ services:
     networks:
       - ny-network
 
+  dash-app:
+    image: ny_website
+    container_name: dash-app-instance
+    depends_on:
+      - mongodb
+    networks:
+      - ny-network
+    ports:
+      - "8050:8050"
+
 networks:
   ny-network:
     driver: bridge
 
 volumes:
   mongodb_data:
+
