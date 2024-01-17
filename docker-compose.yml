@@ -11,15 +11,27 @@ services:
       - "27017:27017"
 
   article-importer:
-    image: ny-article-importer
+    image: ny_article_importer
     container_name: ny-importer-instance
+    environment:
+      - NYTIMES_API_KEY=${NYTIMES_API_KEY}
+    depends_on:
+      - mongodb
+    networks:
+      - ny-network
+
+  newswire-importer:
+    image: ny_newswire_importer
+    container_name: ny-newswire-instance
+    environment:
+      - NYTIMES_API_KEY=${NYTIMES_API_KEY}
     depends_on:
       - mongodb
     networks:
       - ny-network
 
   dash-app:
-    image: ny_website
+    image: ny_dash_website
     container_name: dash-app-instance
     depends_on:
       - mongodb
@@ -27,6 +39,17 @@ services:
       - ny-network
     ports:
       - "8050:8050"
+
+  api:
+    image: ny_api
+    container_name: api-instance
+    depends_on:
+      - mongodb
+    networks:
+      - ny-network
+    ports:
+    - "8000:8000"
+
 
 networks:
   ny-network:

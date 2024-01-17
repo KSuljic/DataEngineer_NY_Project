@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 #Initial imports
+import os
 import requests
 import json
 import pymongo
@@ -31,7 +32,8 @@ def main():
     logging.info("Starting the import process...")
 
     # Access API
-    API_KEY = 'PAKnickrXf68F5WPgbBgEe2Ine6vI7oi'
+    #API_KEY = 'PAKnickrXf68F5WPgbBgEe2Ine6vI7oi'
+    API_KEY = os.getenv('NYTIMES_API_KEY')
     url = 'https://api.nytimes.com/svc/search/v2/'
     endpoint = 'articlesearch.json'
 
