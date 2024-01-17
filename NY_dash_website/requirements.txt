@@ -1,0 +1,7 @@
+dash
+pandas
+plotly
+pymongo
+datetime
+dash_bootstrap_components
+dash_bootstrap_templates
