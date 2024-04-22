@@ -43,10 +43,9 @@ docker-compose up --build
 After running the docker containers, you can access the website at http://localhost:PORT/, where PORT is the port specified in your Docker configuration for the frontend service.
 Contributing
 
-Contributions are welcome! Feel free to fork the repository and submit pull requests.
-License
+## License
 
 This project is licensed under the MIT License - see the LICENSE.md file for details.
 Acknowledgments
 
-    New York Times for providing the APIs used in this project.
+New York Times for providing the APIs used in this project.
